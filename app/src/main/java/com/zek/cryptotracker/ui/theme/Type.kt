@@ -33,28 +33,28 @@ val SpaceMono = FontFamily(
 // Set of Material typography styles to start with
 val Typography = Typography(
     bodySmall = TextStyle(
-        fontFamily = SpaceMono,
+//        fontFamily = SpaceMono,
         fontWeight = FontWeight.Light,
         fontSize = 12.sp,
     ),
     bodyMedium = TextStyle(
-        fontFamily = SpaceMono,
+//        fontFamily = SpaceMono,
         fontWeight = FontWeight.Normal,
         fontSize = 14.sp
     ),
     bodyLarge = TextStyle(
-        fontFamily = SpaceMono,
+//        fontFamily = SpaceMono,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     ),
     labelMedium = TextStyle(
-        fontFamily = SpaceMono,
+//        fontFamily = SpaceMono,
         fontWeight = FontWeight.Normal,
     ),
     headlineMedium = TextStyle(
-        fontFamily = SpaceMono,
+//        fontFamily = SpaceMono,
         fontWeight = FontWeight.Bold,
         fontSize = 18.sp
     )
