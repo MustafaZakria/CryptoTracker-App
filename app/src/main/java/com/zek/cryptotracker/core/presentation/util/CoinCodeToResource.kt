@@ -1,4 +1,4 @@
-package com.zek.cryptotracker.util
+package com.zek.cryptotracker.core.presentation.util
 
 import com.zek.cryptotracker.R
 

@@ -1,4 +1,4 @@
-package com.zek.cryptotracker.util
+package com.zek.cryptotracker.core.domain.util
 
 typealias DomainError = Error
 

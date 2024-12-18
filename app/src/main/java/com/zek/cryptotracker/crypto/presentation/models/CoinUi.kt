@@ -1,9 +1,8 @@
 package com.zek.cryptotracker.crypto.presentation.models
 
-import android.icu.number.NumberFormatter
 import androidx.annotation.DrawableRes
 import com.zek.cryptotracker.crypto.domain.Coin
-import com.zek.cryptotracker.util.getDrawableIdForCoin
+import com.zek.cryptotracker.core.presentation.util.getDrawableIdForCoin
 import java.text.NumberFormat
 import java.util.Locale
 
