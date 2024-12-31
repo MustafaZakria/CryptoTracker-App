@@ -1,5 +1,6 @@
 package com.zek.cryptotracker.crypto.presentation.coin_list
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -13,20 +14,22 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
-import com.zek.cryptotracker.crypto.domain.Coin
+import com.zek.cryptotracker.core.presentation.util.ObserveAsEvents
+import com.zek.cryptotracker.core.presentation.util.toString
 import com.zek.cryptotracker.crypto.presentation.coin_list.components.CoinListItem
 import com.zek.cryptotracker.crypto.presentation.coin_list.components.previewCoin
 import com.zek.cryptotracker.ui.theme.CryptoTrackerAppTheme
+import kotlinx.coroutines.flow.Flow
 
 @Composable
 fun CoinListScreen(
     state: CoinListState,
     modifier: Modifier = Modifier
 ) {
-    if(state.isLoading) {
+
+    if (state.isLoading) {
         Box(
             modifier = Modifier
                 .fillMaxSize(),

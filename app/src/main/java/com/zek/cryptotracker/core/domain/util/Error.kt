@@ -1,3 +1,3 @@
 package com.zek.cryptotracker.core.domain.util
 
-interface Error
+sealed interface Error
