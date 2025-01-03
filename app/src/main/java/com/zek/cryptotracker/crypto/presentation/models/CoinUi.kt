@@ -28,14 +28,14 @@ fun Coin.toCoinUi(): CoinUi {
         name = name,
         symbol = symbol,
         rank = rank,
-        priceUsd = priceUsd.toDisableNumber(),
-        marketCapUsd = marketCapUsd.toDisableNumber(),
-        changePercent24Hr = changePercent24H.toDisableNumber(),
+        priceUsd = priceUsd.toDisplayableNumber(),
+        marketCapUsd = marketCapUsd.toDisplayableNumber(),
+        changePercent24Hr = changePercent24H.toDisplayableNumber(),
         iconRes = getDrawableIdForCoin(symbol)
     )
 }
 
-fun Double.toDisableNumber(): DisplayableNumber {
+fun Double.toDisplayableNumber(): DisplayableNumber {
     val formatter = NumberFormat.getNumberInstance(Locale.getDefault()).apply {
         minimumFractionDigits = 2
         maximumFractionDigits = 2

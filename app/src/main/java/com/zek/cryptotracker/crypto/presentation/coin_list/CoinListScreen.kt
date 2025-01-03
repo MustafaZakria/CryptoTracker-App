@@ -20,12 +20,14 @@ import com.zek.cryptotracker.core.presentation.util.ObserveAsEvents
 import com.zek.cryptotracker.core.presentation.util.toString
 import com.zek.cryptotracker.crypto.presentation.coin_list.components.CoinListItem
 import com.zek.cryptotracker.crypto.presentation.coin_list.components.previewCoin
+import com.zek.cryptotracker.crypto.presentation.models.CoinUi
 import com.zek.cryptotracker.ui.theme.CryptoTrackerAppTheme
 import kotlinx.coroutines.flow.Flow
 
 @Composable
 fun CoinListScreen(
     state: CoinListState,
+    onActionClick: (CoinListAction) -> Unit,
     modifier: Modifier = Modifier
 ) {
 
@@ -45,7 +47,7 @@ fun CoinListScreen(
             items(state.coins) { coinUi ->
                 CoinListItem(
                     coinUi = coinUi,
-                    onClick = { /*TODO*/ },
+                    onClick = { onActionClick.invoke(CoinListAction.onCoinClick(coinUi)) },
                     modifier = Modifier.fillMaxWidth()
                 )
                 HorizontalDivider()
@@ -64,7 +66,8 @@ fun CoinListPreview() {
                     previewCoin.copy(id = it.toString())
                 }
             ),
-            modifier = Modifier.background(MaterialTheme.colorScheme.background)
+            modifier = Modifier.background(MaterialTheme.colorScheme.background),
+            onCoinClick = {}
         )
     }
 }
