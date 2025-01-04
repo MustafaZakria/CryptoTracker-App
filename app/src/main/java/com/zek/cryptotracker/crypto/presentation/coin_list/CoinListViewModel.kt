@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.zek.cryptotracker.core.domain.util.onError
 import com.zek.cryptotracker.core.domain.util.onSuccess
 import com.zek.cryptotracker.crypto.domain.CoinDataSource
+import com.zek.cryptotracker.crypto.presentation.coin_detail.DataPoint
 import com.zek.cryptotracker.crypto.presentation.models.CoinUi
 import com.zek.cryptotracker.crypto.presentation.models.toCoinUi
 import kotlinx.coroutines.channels.Channel
@@ -17,6 +18,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 
 class CoinListViewModel(
     private val coinDataSource: CoinDataSource
@@ -54,11 +56,29 @@ class CoinListViewModel(
         viewModelScope.launch {
             coinDataSource.getCoinHistory(
                 coinId = coinUi.id,
-                start = ZonedDateTime.now().minusDays(5),
+                start = ZonedDateTime.now().minusYears(1),
                 end = ZonedDateTime.now()
             )
                 .onSuccess { history ->
+                    val dataPoints = history
+                        .sortedBy { it.dateTime }
+                        .map {
+                            DataPoint(
+                                x = it.dateTime.hour.toFloat(),
+                                y = it.priceUsd.toFloat(),
+                                xLabel = DateTimeFormatter
+                                    .ofPattern("ha\nM/d")
+                                    .format(it.dateTime)
+                            )
+                        }
 
+                    _state.update {
+                        it.copy(
+                            selectedCoin = it.selectedCoin?.copy(
+                                coinPriceHistory = dataPoints
+                            )
+                        )
+                    }
                 }
                 .onError { error ->
                     _events.send(CoinListEvent.Error(error))

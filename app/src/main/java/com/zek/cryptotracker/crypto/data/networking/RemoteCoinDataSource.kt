@@ -51,8 +51,8 @@ class RemoteCoinDataSource(
                 urlString = constructUrl("/assets/$coinId/history")
             ) {
                 parameter("interval", "h6")
-                parameter("start", startInMillis)
-                parameter("ebd", endInMillis)
+//                parameter("start", startInMillis)
+//                parameter("end", endInMillis)
             }
         }.map { response ->
             response.data.map { it.toCoinPrice() }
